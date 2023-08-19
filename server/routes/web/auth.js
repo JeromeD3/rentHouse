@@ -36,7 +36,7 @@ const auth = (router, app) => {
 
       //3.返回token
       /*生成token*/
-      const token = jwt.sign({ id: user._id }, app.get('secret'))
+      const token = jwt.sign({ id: user._id, username: user.username }, app.get('secret'))
       assert(token, 422, 'token生成失败')
       res.cookie("token", token).send({ username })
     } catch (error) {

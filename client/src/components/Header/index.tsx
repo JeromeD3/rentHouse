@@ -5,10 +5,22 @@ import Hamb from '@/assets/hamb.svg'
 import User from '@/assets/user.svg'
 import { Link } from 'react-router-dom'
 import useStore from '@/store/user'
+import { useEffect } from 'react'
+import request from '@/utils/request'
+
 
 const Index: React.FC = () => {
-  const [user] = useStore((state) => [state.user])
-  
+  const [user, setUser] = useStore((state) => [state.user, state.setUser])
+
+  useEffect(() => {
+    if (!user) console.log('user is null')
+    request.get('/profile').then((res) => {
+      
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      setUser(res.username)
+    })
+  }, [user])
   return (
     <header className="flex justify-between">
       <a href="" className="flex items-center gap-1">

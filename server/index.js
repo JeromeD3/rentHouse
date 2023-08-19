@@ -3,16 +3,18 @@ require('dotenv').config() // 获取环境变量
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const CookieParser = require('cookie-parser')
 const port = process.env.PORT
 const secret = process.env.SECRET
 app.set('secret', secret)
-
 
 app.use(cors({
   credentials: true,
   origin: 'http://localhost:5173'
 }))
+
 app.use(express.json())
+app.use(CookieParser())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
