@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "paths": { // 配置导出路径（这里根据自己项目执行修改）
+      "@/components*": [
+        "./src/components*"
+      ],
+      "@/config*": [
+        "./src/config*"
+      ],
+      "@/store*": [
+        "./src/store*"
+      ],
+      "@/utils*": [
+        "./src/utils*"
+      ],
+    },
+    "useUnknownInCatchVariables":false,
+    "baseUrl": ".",
+    "types": [
+      "vite/client",
+      "vite-plugin-svgr/client",
+    ],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
