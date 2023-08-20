@@ -44,5 +44,9 @@ const auth = (router, app) => {
       res.status(422).send(error)
     }
   })
+
+  router.post('/logout', (req, res) => {
+    res.cookie("token", "").json(true)
+  })
 }
 module.exports = auth;
