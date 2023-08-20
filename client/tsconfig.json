@@ -13,8 +13,11 @@
       "@/utils*": [
         "./src/utils*"
       ],
+      "@/context*": [
+        "./src/context*"
+      ],
     },
-    "useUnknownInCatchVariables":false,
+    "useUnknownInCatchVariables": false,
     "baseUrl": ".",
     "types": [
       "vite/client",

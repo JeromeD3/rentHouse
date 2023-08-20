@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const User = require('../../models/User')
 
 const user = (router, app) => {
   router.get('/profile', (req, res) => {
@@ -10,9 +11,10 @@ const user = (router, app) => {
       })
     }
 
-    jwt.verify(token, app.get('secret'), (err, decoded) => {
+    jwt.verify(token, app.get('secret'), async(err, decoded) => {
       if (err) throw err
-      res.json(decoded)
+      const user = await User.findById(decoded.id)
+      res.json(user)
     })
   })
 }

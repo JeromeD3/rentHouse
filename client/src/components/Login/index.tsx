@@ -1,7 +1,7 @@
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import request from '@/utils/request'
-import useStore from '@/store/user'
+import { UserContext, UserContextValue } from '@/context/user'
 
 interface loginRes {
   username: string
@@ -12,9 +12,7 @@ export const Login = () => {
 
   const [redirect, setRedirect] = useState(false)
   const navigate = useNavigate()
-
-  const [setUser] = useStore((state) => [state.setUser])
-
+  const { setUser } = useContext(UserContext) as UserContextValue
   async function handleLogin(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault()
     try {
@@ -22,7 +20,6 @@ export const Login = () => {
         username,
         password,
       })) as loginRes
-      console.log(res)
       setUser(res.username)
       setRedirect(true)
     } catch (error) {
