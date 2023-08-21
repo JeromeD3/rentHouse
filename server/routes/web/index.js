@@ -6,6 +6,7 @@ const Router = express.Router
 
 const auth = require('./auth')
 const user = require('./user')
+const uploadByLink = require('./upload/link') 
 
 const Index = (app) => {
   const router = Router({
@@ -14,6 +15,7 @@ const Index = (app) => {
 
   auth(router,app)
   user(router,app)
+  uploadByLink(router)
   app.use('/web/api', router)
 }
 module.exports = Index

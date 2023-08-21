@@ -23,6 +23,9 @@ dependencies:
   http-assert:
     specifier: ^1.5.0
     version: registry.npmmirror.com/http-assert@1.5.0
+  image-downloader:
+    specifier: ^4.3.0
+    version: 4.3.0
   inflection:
     specifier: ^2.0.1
     version: registry.npmmirror.com/inflection@2.0.1
@@ -61,6 +64,25 @@ packages:
   /dotenv@16.3.1:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
+    dev: false
+
+  /follow-redirects@1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
+
+  /image-downloader@4.3.0:
+    resolution: {integrity: sha512-UBioN0E+8zu8N0lLC6wkZmPA/MA1A3yx9B1whjy5O/YiOV9XrSxLLKi7JqLLj6knQ3n9N1OBoHFS7shp8sehBQ==}
+    engines: {node: '>=6.10.1'}
+    dependencies:
+      follow-redirects: 1.15.2
+    transitivePeerDependencies:
+      - debug
     dev: false
 
   /saslprep@1.0.3:
