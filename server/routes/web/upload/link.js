@@ -8,17 +8,12 @@ const uploadByLink = (router) => {
     const newName = 'photo' + Date.now() + '.jpg'
     const dest = path.resolve(__dirname, '../../../') + '/uploads/' + newName
 
-    imageDownloader.image({
+   await imageDownloader.image({
       url: link,
       dest: dest
-    }).then(({ filename }) => {
-      console.log('Saved to', filename)
-    }).catch((err) => {
-      console.error("Error", err)
     })
 
-
-    res.json({ data: newName })
+    res.json({ filename: newName })
   })
 }
 

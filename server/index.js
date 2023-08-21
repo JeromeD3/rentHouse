@@ -12,7 +12,10 @@ app.use(cors({
   credentials: true,
   origin: 'http://localhost:5173'
 }))
-
+// 将打包好的前端项目静态资源托管到服务器
+// app.use('/', express.static(__dirname + '/web'))
+// app.use('/admin', express.static(__dirname + '/admin'))
+app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use(express.json())
 app.use(CookieParser())
 
@@ -24,10 +27,7 @@ require('./plugins/db')()
 require('./routes/admin')(app)
 require('./routes/web')(app)
 
-// 将打包好的前端项目静态资源托管到服务器
-// app.use('/', express.static(__dirname + '/web'))
-// app.use('/admin', express.static(__dirname + '/admin'))
-// app.use('/uploads', express.static(__dirname + '/uploads'))
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
