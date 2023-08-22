@@ -1,5 +1,5 @@
 const multer = require('multer')
-const authMiddleWare = require('../../../middleware/auth') // 中间件：校验token
+const auth = require('../../../middleware/auth') // 中间件：校验token
 const fs = require('fs')
 /**
  * 上传路径
@@ -8,7 +8,7 @@ const uploadPath = multer({ dest: 'uploads/' })
 
 const upload = (app) => {
   //single的字段要和文件的key值保持一致
-  app.post('/upload', uploadPath.array('photos', 100), async (req, res) => {
+  app.post('/upload', auth(), uploadPath.array('photos', 100), async (req, res) => {
     // 多文件上传
     console.log(req)
     const uploadedfiles = []

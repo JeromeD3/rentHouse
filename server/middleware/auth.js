@@ -4,9 +4,8 @@ const assert = require('http-assert')
 const auth = () => {
   const User = require('../models/User')
   return async (req, res, next) => {
-    const token = String(req.headers.authorization || '')
-      .split(' ')
-      .pop()
+    const { token } = req.cookies
+
     assert(token, 401, '请先提供token！')
     const { id } = jwt.verify(token, req.app.get('secret'))
     assert(token, 401, '无效的id')
