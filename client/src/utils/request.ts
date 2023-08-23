@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosResponse } from 'axios'
 import proxy from '@/config/host'
 
 const env = import.meta.env.MODE || 'development'
@@ -22,7 +22,8 @@ instance.interceptors.response.use(
       if (data.code === SUCCESS_CODE) {
         return data
       }
-      return data
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return data as AxiosResponse<any, any>
       // return Promise.reject(data)
     }
     return Promise.reject(response?.data)
