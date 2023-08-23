@@ -23,32 +23,32 @@ export const Perks = ({ selected, onChange }: PerksProps) => {
     <>
       <div className="gap-2 mt-2 grid grid-cols-2 md:grid-col-4 lg:grid-cols-6">
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="wifi" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('wifi')} name="wifi" onChange={handleCbClick} />
           <Wifi />
           <span>WiFi</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="parking" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('parking')} name="parking" onChange={handleCbClick} />
           <Truck />
           <span>免费停车</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="tv" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('tv')} name="tv" onChange={handleCbClick} />
           <Tv />
           <span>电视</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="radio" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('radio')} name="radio" onChange={handleCbClick} />
           <Radio />
           <span>收音机</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="pet" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('pet')} name="pet" onChange={handleCbClick} />
           <Pets />
           <span>宠物</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="entrance" onChange={handleCbClick} />
+          <input type="checkbox" checked={selected.includes('entrance')} name="entrance" onChange={handleCbClick} />
           <Entrance />
           <span>隐私进入</span>
         </label>

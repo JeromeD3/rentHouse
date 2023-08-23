@@ -1,7 +1,10 @@
 import { PreInput } from './PreInput'
 import { Perks } from './Perks'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { PhotosUploader } from './PhotosUploader'
+import request from '@/utils/request'
+import { Nav } from '../../Account/Nav'
+import { Navigate, useParams } from 'react-router-dom'
 
 export const New = () => {
   const [title, setTitle] = useState('')
@@ -15,9 +18,63 @@ export const New = () => {
   const [checkOut, setCheckOut] = useState('')
   const [maxGuests, setMaxGuests] = useState(1)
 
+  const [redirect, setRedirect] = useState(false)
+
+  const { id } = useParams()
+
+  const saveNewPlace = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const placeData = {
+      title,
+      address,
+      photos: addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    }
+    if (id) {
+      await request.put(`/places/${id}`, { ...placeData, id })
+
+      // update
+    } else {
+      // new
+
+      await request.post('/places', placeData)
+    }
+
+    setRedirect(true)
+  }
+
+  useEffect(() => {
+    if (!id) return
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    request.get(`/places/${id}`).then((res: any) => {
+      console.log(res)
+
+      setTitle(res.title)
+      setAddress(res.address)
+      setAddedPhotos(res.photos)
+      setDescription(res.description)
+      setPerks(res.perks)
+      setExtraInfo(res.extraInfo)
+      setCheckIn(res.checkIn)
+      setCheckOut(res.checkOut)
+      setMaxGuests(res.maxGuests)
+    })
+  }, [id])
+  if (redirect) {
+    return <Navigate to="/account/places" />
+  }
+
   return (
     <div>
-      <form action="">
+      <Nav />
+      <form onSubmit={saveNewPlace}>
         <PreInput title="标题" desc="xxx" />
         <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="标题,例如 ：my lovely apt " />
 

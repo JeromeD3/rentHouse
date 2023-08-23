@@ -20,7 +20,19 @@ const place = (router) => {
     res.json(places)
   })
 
-  
+  router.get('/places/:id', auth(), async (req, res) => {
+    const place = await Place.findById(req.params.id)
+    res.json(place)
+  })
+
+  router.put('/places/:id', auth(), async (req, res) => {
+
+    const placeDoc = await Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+    res.json(placeDoc)
+  }
+  )
+
 }
 
 module.exports = place
