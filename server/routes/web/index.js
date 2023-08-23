@@ -8,6 +8,7 @@ const auth = require('./auth')
 const user = require('./user')
 const uploadByLink = require('./upload/link')
 const upload = require('./upload')
+const place = require('./place')
 
 const Index = (app) => {
   const router = Router({
@@ -18,6 +19,7 @@ const Index = (app) => {
   user(router, app)
   uploadByLink(router)
   upload(router)
+  place(router)
   app.use('/web/api', router)
 }
 module.exports = Index
