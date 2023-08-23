@@ -1,6 +1,10 @@
 import request from '@/utils/request'
 import { useState } from 'react'
 import Upload from '@/assets/upload.svg'
+import Trash from '@/assets/trash.svg'
+import Star from '@/assets/star.svg'
+import Star2 from '@/assets/star2.svg'
+
 interface PhotosUploaderProps {
   addedPhotos: string[]
   onChange: React.Dispatch<React.SetStateAction<string[]>>
@@ -36,6 +40,16 @@ export const PhotosUploader = ({ addedPhotos, onChange }: PhotosUploaderProps) =
 
     onChange((prev) => [...prev, ...filenames])
   }
+
+  const removePhoto = (link: string) => [onChange([...addedPhotos.filter((photo) => photo !== link)])]
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const selectAsMainPhoto = (e: any, photo: string) => {
+    e.preventDefault()
+
+    const newAddedPhotos = [photo, ...addedPhotos.filter((p) => p !== photo)]
+    onChange(newAddedPhotos)
+  }
   return (
     <>
       <div className="flex gap-2">
@@ -48,8 +62,15 @@ export const PhotosUploader = ({ addedPhotos, onChange }: PhotosUploaderProps) =
       <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {addedPhotos.length > 0 &&
           addedPhotos.map((photo) => (
-            <div key={photo} className="h-32 flex">
+            <div key={photo} className="h-32 flex relative">
               <img className="object-cover rounded-2xl w-full" src={`http://localhost:3000/uploads/${photo}`} alt="" />
+              <button onClick={() => removePhoto(photo)} className="cursor-pointer absolute bottom-1 right-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3">
+                <Trash />
+              </button>
+
+              <button onClick={(e) => selectAsMainPhoto(e, photo)} className="cursor-pointer absolute bottom-1 left-1 text-white bg-black bg-opacity-50 rounded-2xl py-2 px-3">
+                {photo === addedPhotos[0] ? <Star2 /> : <Star />}
+              </button>
             </div>
           ))}
 
