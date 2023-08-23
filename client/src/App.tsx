@@ -5,6 +5,8 @@ import { Layout } from './components/Layout'
 import { Register } from './components/Register'
 import { Account } from './components/Account'
 import UserContextProvider from './context/user'
+import { Place } from './components/Place'
+import { New } from './components/Place/New'
 function App() {
   return (
     <>
@@ -14,8 +16,10 @@ function App() {
             <Route index element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/account/:subpage?" element={<Account />}></Route>
-            <Route path="/account/:subpage/:action" element={<Account />}></Route>
+            <Route path="/account" element={<Account />}></Route>
+            <Route path="/account/places" element={<Place />}></Route>
+            <Route path="/account/places/new" element={<New />}></Route>
+            <Route path="/account/places/:id" element={<New />}></Route>
 
           </Route>
         </Routes>
