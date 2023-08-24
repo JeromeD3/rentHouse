@@ -3,7 +3,7 @@ import Plus from '@/assets/plus.svg'
 import request from '@/utils/request'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { placeData } from '.'
+import { placeData } from './PlaceByUser'
 
 export const List = () => {
   const [places, setPlaces] = useState<[]>([])

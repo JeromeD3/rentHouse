@@ -17,7 +17,7 @@ export const New = () => {
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [maxGuests, setMaxGuests] = useState(1)
-
+  const [price, setPrice] = useState(100)
   const [redirect, setRedirect] = useState(false)
 
   const { id } = useParams()
@@ -35,6 +35,7 @@ export const New = () => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     }
     if (id) {
       await request.put(`/places/${id}`, { ...placeData, id })
@@ -65,6 +66,7 @@ export const New = () => {
       setCheckIn(res.checkIn)
       setCheckOut(res.checkOut)
       setMaxGuests(res.maxGuests)
+      setPrice(res.price)
     })
   }, [id])
   if (redirect) {
@@ -94,7 +96,7 @@ export const New = () => {
         <textarea value={extraInfo} onChange={(e) => setExtraInfo(e.target.value)} />
 
         <PreInput title="入住时间 & 离开时间" desc="xxxxxxxx" />
-        <div className="grid gap-2  sm:grid-cols-3">
+        <div className="grid gap-2  sm:grid-cols-2 md:grid-cols-4">
           <div>
             <h3 className="mt-2 -mb-1">入住时间</h3>
             <input value={checkIn} onChange={(e) => setCheckIn(e.target.value)} type="text" placeholder="14:00" />
@@ -106,6 +108,11 @@ export const New = () => {
           <div>
             <h3 className="mt-2 -mb-1">最大客人数量</h3>
             <input value={maxGuests} onChange={(e) => setMaxGuests(Number(e.target.value))} type="number" placeholder="1" />
+          </div>
+
+          <div>
+            <h3 className="mt-2 -mb-1">晚上居住价格</h3>
+            <input value={price} onChange={(e) => setPrice(Number(e.target.value))} type="number" placeholder="1" />
           </div>
         </div>
 

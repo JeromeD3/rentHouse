@@ -2,7 +2,7 @@ import { UserContext, UserContextValue } from '@/context/user'
 import { useContext, useState } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import request from '@/utils/request'
-import { Place } from '../Place'
+import { Place } from '../Place/PlaceByUser'
 import { Nav } from './Nav'
 
 export const Account = () => {
