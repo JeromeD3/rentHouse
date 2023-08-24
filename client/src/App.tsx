@@ -5,9 +5,12 @@ import { Layout } from './components/Layout'
 import { Register } from './components/Register'
 import { Account } from './components/Account'
 import UserContextProvider from './context/user'
-import { Place } from './components/Place'
+import { Place as PlaceByUser } from './components/Place/PlaceByUser'
+import Place from './components/Place/index'
+
 import { New } from './components/Place/New'
-function App() {
+
+function App() { 
   return (
     <>
       <UserContextProvider>
@@ -17,10 +20,10 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/account" element={<Account />}></Route>
-            <Route path="/account/places" element={<Place />}></Route>
+            <Route path="/account/places" element={<PlaceByUser />}></Route>
             <Route path="/account/places/new" element={<New />}></Route>
             <Route path="/account/places/:id" element={<New />}></Route>
-
+            <Route path="/place/:id" element={<Place />}></Route>
           </Route>
         </Routes>
       </UserContextProvider>

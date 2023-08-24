@@ -12,7 +12,7 @@ const place = (router) => {
   })
 
 
-  router.get('/places', auth(), async (req, res) => {
+  router.get('/places', auth(), async (_, res) => {
     const places = await Place.find()
     res.json(places)
   })
