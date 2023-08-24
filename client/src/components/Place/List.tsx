@@ -10,7 +10,7 @@ export const List = () => {
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    request.get('/places').then((res: any) => {
+    request.get('/user-places').then((res: any) => {
       console.log(res)
       setPlaces(res)
     })
