@@ -1,13 +1,13 @@
-import Booking from '../../models/booking'
-import auth from '../../middleware/auth'
+const Booking = require('../../models/Booking')
+const auth = require('../../middleware/auth')
 
 const booking = (router) => {
-  router.post('/booking', auth(), async (req, res) => {
-    const res = await Booking.create({
+  router.post('/bookings', auth(), async (req, res) => {
+    const bookingDoc = await Booking.create({
       owner: req.user._id,
       ...req.body
     })
-    res.json(res)
+    res.json(bookingDoc)
   })
 
 }
