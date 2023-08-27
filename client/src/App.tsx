@@ -9,8 +9,10 @@ import { Place as PlaceByUser } from './components/Place/PlaceByUser'
 import Place from './components/Place/index'
 
 import { New } from './components/Place/New'
+import { BookingByUser } from './components/Booking/BookingByUser'
+import { List as BookingsList } from './components/Booking/List'
 
-function App() { 
+function App() {
   return (
     <>
       <UserContextProvider>
@@ -19,11 +21,13 @@ function App() {
             <Route index element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/account" element={<Account />}></Route>
-            <Route path="/account/places" element={<PlaceByUser />}></Route>
-            <Route path="/account/places/new" element={<New />}></Route>
-            <Route path="/account/places/:id" element={<New />}></Route>
+            <Route path="/account" element={<Account />} />
+            <Route path="/account/places" element={<PlaceByUser />} />
+            <Route path="/account/places/new" element={<New />} />
+            <Route path="/account/places/:id" element={<New />} />
             <Route path="/place/:id" element={<Place />}></Route>
+            <Route path="/account/bookings" element={<BookingsList />} />
+            <Route path="/account/bookings/:id" element={<BookingByUser />} />
           </Route>
         </Routes>
       </UserContextProvider>
