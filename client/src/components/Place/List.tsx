@@ -4,6 +4,7 @@ import request from '@/utils/request'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { placeData } from './PlaceByUser'
+import { Img } from './Img'
 
 export const List = () => {
   const [places, setPlaces] = useState<[]>([])
@@ -29,11 +30,7 @@ export const List = () => {
           places.map((place: placeData) => (
             <Link to={'/account/places/' + place._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl" key={place._id}>
               <div className="w-32 h-32 bg-gray-300  shrink-0">
-                {place.photos.length > 0 ? (
-                  <img className="object-cover" src={`http://localhost:3000/uploads/${place.photos[0]}`} />
-                ) : (
-                  <div className="flex justify-center items-center h-full text-2xl text-gray-500">No photo</div>
-                )}
+                <Img place={place} />
               </div>
 
               <div className="grow-0 shrink">

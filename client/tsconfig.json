@@ -16,6 +16,9 @@
       "@/context*": [
         "./src/context*"
       ],
+      "@/assets*": [
+        "./src/assets*"
+      ],
     },
     "useUnknownInCatchVariables": false,
     "baseUrl": ".",
