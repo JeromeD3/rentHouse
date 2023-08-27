@@ -11,8 +11,8 @@ const booking = (router) => {
   })
 
   router.get('/bookings', auth(), async (req, res) => {
-    const bookings = await Booking.find({ user: req.user._id })
-    
+    const bookings = await Booking.find({ user: req.user._id }).populate('place')
+
     res.json(bookings)
   })
 
